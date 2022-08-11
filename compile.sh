@@ -43,8 +43,8 @@ set -e
 # ----------------------------------------------------------------------------- Variables
 
 
-# The version string of the nginx release that should be installed.
-readonly LIBOWFAT_VERSION='0.29'
+# The version string of the libowfat release that should be installed.
+readonly LIBOWFAT_VERSION='0.32'
 
 # Desired opentracker features, consult the documentation for more information.
 readonly OPENTRACKER_FEATURES='-DWANT_FULLSCRAPE -DWANT_RESTRICT_STATS -DWANT_SYSLOGS'
@@ -131,9 +131,9 @@ cd -- "${SOURCE_DIRECTORY}"
 if [ ! -d "${SOURCE_DIRECTORY}/libowfat" ]
 then
     rm --recursive --force -- "${SOURCE_DIRECTORY}/libowfat"
-    wget "http://dl.fefe.de/libowfat-${LIBOWFAT_VERSION}.tar.bz2"
-    tar --bzip2 --extract --file="${SOURCE_DIRECTORY}/libowfat-${LIBOWFAT_VERSION}.tar.bz2"
-    rm --force -- "${SOURCE_DIRECTORY}/libowfat-${LIBOWFAT_VERSION}.tar.bz2"
+    wget "http://www.fefe.de/libowfat/libowfat-${LIBOWFAT_VERSION}.tar.xz"
+    tar --extract --file="${SOURCE_DIRECTORY}/libowfat-${LIBOWFAT_VERSION}.tar.xz"
+    rm --force -- "${SOURCE_DIRECTORY}/libowfat-${LIBOWFAT_VERSION}.tar.xz"
     ln --symbolic -- "${SOURCE_DIRECTORY}/libowfat-${LIBOWFAT_VERSION}" "${SOURCE_DIRECTORY}/libowfat"
     chown --recursive -- root:root "${SOURCE_DIRECTORY}/libowfat"
     cd -- "${SOURCE_DIRECTORY}/libowfat"
